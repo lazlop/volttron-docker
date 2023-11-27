@@ -1,0 +1,6 @@
+Reference Point Name,Volttron Point Name,Units,Unit Details,BACnet Object Type,Property,Writable,Index,Write Priority,Notes
+hvac_oveZonSupSou_TZonCooSet_u,hvac_oveZonSupSou_TZonCooSet_u,degreesKelvin,(default 0.0),analogValue,presentValue,FALSE,3,,
+hvac_oveZonSupSou_TZonHeaSet_u,hvac_oveZonSupSou_TZonHeaSet_u,UNKNOWN UNITS,(default 0.0),analogValue,presentValue,FALSE,63,,
+hvac_oveAhu_yPumHea_u,hvac_oveAhu_yPumHea_u,UNKNOWN UNITS,(default 0.0),analogOutput,presentValue,FALSE,6,,
+hvac_reaZonSou_TZon_y,hvac_reaZonSou_TZon_y,degreesKelvin,,analogInput,presentValue,FALSE,134,,
+hvac_reaZonSou_TSup_y,hvac_reaZonSou_TSup_y,degreesKelvin,,analogInput,presentValue,FALSE,135,,

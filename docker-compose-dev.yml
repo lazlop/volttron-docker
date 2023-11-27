@@ -20,8 +20,24 @@ services:
       - volttron1-volume:/home/volttron/db
     environment:
       - CONFIG=/home/volttron/configs
-      - LOCAL_USER_ID=1000
+      - LOCAL_USER_ID=1000  
+    networks:
+      boptest-net:
+        ipv4_address: 10.0.0.9
 
 volumes:
   volttron1-volume:
     name: volttron1-data
+
+# Putting on same network as virtual digital twin
+networks:
+  boptest-net:
+    name: boptest-net
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: "10.0.0.0/24"
+          gateway: "10.0.0.1"
+    attachable: true
+    external: true

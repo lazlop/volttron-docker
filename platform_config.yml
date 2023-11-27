@@ -15,7 +15,10 @@ config:
 # Agents dictionary to install. The key must be a valid
 # identity for the agent to be installed correctly.
 agents:
-
+  platform.bacnet_proxy:
+    source: $VOLTTRON_ROOT/services/core/BACnetProxy
+    config: $CONFIG/bacnet-proxy.config
+    tag: proxy
   # Each agent identity.config file should be in the configs
   # directory and will be used to install the agent.
   listener:
@@ -26,36 +29,42 @@ agents:
   platform.driver:
     source: $VOLTTRON_ROOT/services/core/PlatformDriverAgent
     config_store:
-      fake.csv:
-        file: $VOLTTRON_ROOT/examples/configurations/drivers/fake.csv
+      devices/boptest-bacnet:
+        file: $CONFIG/devices/boptest-bacnet.config
+      boptest-bacnet.csv:
+        file: $CONFIG/registry_configs/boptest-bacnet.csv
         type: --csv
-      devices/fake-campus/fake-building/fake-device:
-        file: $VOLTTRON_ROOT/examples/configurations/drivers/fake.config
-    tag: driver
+      # fake.csv:
+      #   file: $VOLTTRON_ROOT/examples/configurations/drivers/fake.csv
+      #   type: --csv
+      # devices/fake-campus/fake-building/fake-device:
+      #   file: $VOLTTRON_ROOT/examples/configurations/drivers/fake.config
+      tag: driver
 
   # TLDR: If you want to install a Volttron Central Platform agent, you must first install the
   # Platform Driver before installing VCP agent
   # Additional: VolttronCentralPlatform requires Bacpypes, which gets installed only when Platform Driver is installed.
   # This is an unfortunate and not ideal setup, however, this issue will be addresed in a later PR so that VCP Agent
   # can be installed on its own without having to install Platform Driver first.
-  platform.agent:
-    source: $VOLTTRON_ROOT/services/core/VolttronCentralPlatform
-    config: $CONFIG/vcp.config
-    tag: vcp
+  # platform.agent:
+  #   source: $VOLTTRON_ROOT/services/core/VolttronCentralPlatform
+  #   config: $CONFIG/vcp.config
+  #   tag: vcp
 
   platform.actuator:
     source: $VOLTTRON_ROOT/services/core/ActuatorAgent
     tag: actuator
 
-  platform.historian:
-    source: $VOLTTRON_ROOT/services/core/SQLHistorian
-    config: $CONFIG/historian.config
-    tag: historian
 
-  volttron.central:
-    source: $VOLTTRON_ROOT/services/core/VolttronCentral
-    config: $CONFIG/vc.config
-    tag: vc
+  # platform.historian:
+  #   source: $VOLTTRON_ROOT/services/core/SQLHistorian
+  #   config: $CONFIG/historian.config
+  #   tag: historian
+
+  # volttron.central:
+  #   source: $VOLTTRON_ROOT/services/core/VolttronCentral
+  #   config: $CONFIG/vc.config
+  #   tag: vc
 
 #  weather:
 #    source: $VOLTTRON_ROOT/examples/DataPublisher
@@ -68,3 +77,5 @@ agents:
 #  platform.bacnet_proxy:
 #    source: $VOLTTRON_ROOT/services/core/BACnetProxy
 #    config: $CONFIG/bacnet-proxy.json
+
+

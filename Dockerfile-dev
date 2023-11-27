@@ -107,6 +107,14 @@ RUN echo "package installed at `date`"
 #
 # The user must be root at this point to allow gosu to work
 ########################################
+
+#Add if you need to bacnet scan
+ADD volttron/scripts/bacnet /home/volttron/bacnet
+
+RUN pip3 install requests bacpypes
+
+
+
 USER root
 WORKDIR ${VOLTTRON_USER_HOME}
 ENTRYPOINT ["/startup/entrypoint.sh"]
